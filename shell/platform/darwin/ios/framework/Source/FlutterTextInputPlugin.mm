@@ -214,12 +214,8 @@ static UITextAutocapitalizationType ToUITextAutocapitalizationType(NSString* inp
   self.markedTextRange =
       composingRange.length > 0 ? [FlutterTextRange rangeWithNSRange:composingRange] : nil;
 
-  if (textChanged) {
+  if (textChanged)
     [self.inputDelegate textDidChange:self];
-
-    // For consistency with Android behavior, send an update to the framework.
-    [self updateEditingState];
-  }
 }
 
 - (NSRange)clampSelection:(NSRange)range forText:(NSString*)text {
